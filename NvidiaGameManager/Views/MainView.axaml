@@ -12,7 +12,7 @@
         <vm:MainViewModel />
     </Design.DataContext>
 
-    <Grid ShowGridLines="True" ColumnDefinitions="Auto, Auto"
+    <Grid ShowGridLines="False" ColumnDefinitions="Auto, Auto"
           RowDefinitions="Auto, Auto">
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="20">
             <Label>Select display</Label>
@@ -43,7 +43,22 @@
                     ValueChanged="Hue_OnValueChanged" />
 
             <Button Grid.Row="5" Grid.Column="0" Click="ResetClicked" HorizontalAlignment="Right" Margin="10">Reset</Button>
-            <Button Grid.Row="5" Grid.Column="1" Click="ResetClicked" Margin="10">Save</Button>
+            <Button Grid.Row="5" Grid.Column="1" Click="SaveClicked" Margin="10">Save</Button>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" ShowGridLines="False"
+              ColumnDefinitions="Auto, Auto, Auto, Auto"
+              RowDefinitions="Auto">
+            <StackPanel Margin="20">
+                <Label>Select config</Label>
+                <ComboBox Name="ConfigSelector" ItemsSource="{Binding AllDisplays}"
+                          SelectedIndex="0" SelectionChanged="ConfigSelector_OnSelectionChanged" />
+            </StackPanel>
+            <Button Margin="10" Grid.Row="0" Grid.Column="1" Click="AddClicked">Add</Button>
+            <Button Margin="10" Grid.Row="0" Grid.Column="2" Click="RemoveClicked">remove</Button>
+            <TextBox Grid.Row="0" Grid.Column="3" Name="ConfigName" Margin="10 20 10 20"
+                     Watermark="config name">
+            </TextBox>
+
         </Grid>
     </Grid>
 

@@ -7,4 +7,5 @@ namespace NvidiaGameManager.ViewModels;
 public class MainViewModel : ViewModelBase
 {
     public string[] AllDisplays { get; set;  } = new string[]{};
+    public string[] AllConfigs { get; set;  } = new string[]{};
 }
