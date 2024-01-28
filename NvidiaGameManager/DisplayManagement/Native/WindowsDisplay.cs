@@ -6,14 +6,15 @@ using System.Reactive;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NvidiaGameManager.DisplayManagement;
 
-namespace NvidiaGameManager
+namespace NvidiaGameManager.DisplayManagement.Native
 {
-    internal class Display
+    internal class WindowsDisplay
     {
         private readonly List<MonitorInfo> _displays = new();
 
-        public Display()
+        public WindowsDisplay()
         {
             LoadDisplays();
         }

@@ -12,17 +12,35 @@ using WindowsDisplayAPI;
 using Display = WindowsDisplayAPI.Display;
 using Avalonia.Platform;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading;
 using Avalonia.Controls.Primitives;
 using NvAPIWrapper.Native.GPU;
 using NvAPIWrapper.Native.GPU.Structures;
 using NvAPIWrapper.Native;
+using NvidiaGameManager.DisplayManagement;
+using static NvAPIWrapper.Native.Mosaic.Structures.DisplayTopologyStatus;
+using NvidiaGameManager.DisplayManagement.Native;
+using DisplayApi = NvidiaGameManager.DisplayManagement.Native.DisplayApi;
+using System.Diagnostics.Contracts;
+using NvidiaGameManager.ViewModels;
 
 namespace NvidiaGameManager.Views;
 
 public partial class MainView : UserControl
 {
-    Display display = new Display();
+    // TODO read current settings at startup
+    private DisplaySettings _settings = SettingsManager.DefaultSettings;
+    private DisplayData _display;
+    private DisplayData[] _allDisplays;
+
+    public enum ShapeType
+    {
+        RedCircle,
+        RedSquare,
+        BlueCircle,
+        BlueSquare
+    }
 
     private void InitializeComponent()
     {
@@ -32,33 +50,94 @@ public partial class MainView : UserControl
     public MainView()
     {
         InitializeComponent();
-        display.Initialize();
+
+        _allDisplays = DisplayManager.GetAllDisplays();
+        _display = DisplayManager.GetDisplayData();
+
+        this.Loaded += ControlLoaded;
     }
 
-
-    public void ButtonClicked(object source, RoutedEventArgs args)
+    void ControlLoaded(object? sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("Click!");
-        var monitor = display.GetDisplays().First();
+        var dataContext = (this.DataContext as MainViewModel);
+        var comboBox = GetDisplaySelector();
 
-        display.SetBrightness(monitor, 100);
-        var temp = display.GetTemperature(monitor);
+        dataContext.AllDisplays = _allDisplays.Select(x => x.WindowsDisplay.DisplayName).ToArray();
 
-        Debug.WriteLine($"T {temp}");
-        display.SetTemperature(monitor, MC_COLOR_TEMPERATURE.MC_COLOR_TEMPERATURE_6500K);
+        comboBox.ItemsSource = null;
+        comboBox.ItemsSource = dataContext.AllDisplays;
+
+        comboBox.SelectedIndex = 0;
+    }
+
+    private void SetSliderValue(string name, double value)
+    {
+        var slider = this.FindControl<Slider>(name);
+        if (slider != null)
+        {
+            slider.Value = value;
+        }
+        else
+        {
+            Debug.WriteLine($"Could not find slider {name}");
+        }
+    }
+
+    // reset all
+    public void ResetClicked(object source, RoutedEventArgs args)
+    {
+        SettingsManager.ResetSettings(_display);
+        var defaultSettings = SettingsManager.DefaultSettings;
+        SetSliderValue("Brightness", defaultSettings.brightness);
+        SetSliderValue("Contrast", defaultSettings.contrast);
+        SetSliderValue("Gamma", defaultSettings.gamma);
+        SetSliderValue("Vibrance", defaultSettings.vibrance);
+        SetSliderValue("Hue", defaultSettings.hue);
     }
 
     private void Brightness_OnValueChanged(object? source, RangeBaseValueChangedEventArgs e)
     {
-        var value = e.NewValue;
-        var monitor = display.GetDisplays().First();
-        display.SetBrightness(monitor, (uint)value);
+        _settings.brightness = e.NewValue;
+        SettingsManager.ApplySettingsSafe(_display, _settings);
     }
 
     private void Contrast_OnValueChanged(object? source, RangeBaseValueChangedEventArgs e)
     {
-        var value = e.NewValue;
-        var monitor = display.GetDisplays().First();
-        display.SetContrast(monitor, (uint)value);
+        _settings.contrast = e.NewValue;
+        SettingsManager.ApplySettingsSafe(_display, _settings);
+    }
+
+    public void Gamma_OnValueChanged(object? sender, RangeBaseValueChangedEventArgs e)
+    {
+        _settings.gamma = e.NewValue;
+        SettingsManager.ApplySettingsSafe(_display, _settings);
+    }
+
+    private void Vibrance_OnValueChanged(object? sender, RangeBaseValueChangedEventArgs e)
+    {
+        _settings.vibrance = (int)e.NewValue;
+        SettingsManager.ApplySettingsSafe(_display, _settings);
+    }
+
+    private void Hue_OnValueChanged(object? sender, RangeBaseValueChangedEventArgs e)
+    {
+        _settings.hue = (int)e.NewValue;
+        SettingsManager.ApplySettingsSafe(_display, _settings);
+    }
+
+    private ComboBox GetDisplaySelector()
+    {
+        return this.FindControl<ComboBox>("DisplaySelector");
+    }
+
+    private void SetSelectedDisplay(DisplayData display)
+    {
+        _display = display;
+    }
+
+    private void SelectingItemsControl_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        var comboBox = GetDisplaySelector();
+        SetSelectedDisplay(_allDisplays[comboBox.SelectedIndex]);
     }
 }

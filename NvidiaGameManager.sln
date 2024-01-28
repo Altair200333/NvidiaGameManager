@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NvidiaGameManager", "Nvidia
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NvidiaGameManager.Desktop", "NvidiaGameManager.Desktop\NvidiaGameManager.Desktop.csproj", "{5DAD6103-4D3E-4603-B709-EA33845DE725}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsDisplayAPI", "..\WindowsDisplayAPI\WindowsDisplayAPI\WindowsDisplayAPI.csproj", "{0406010A-4E9E-4A2F-B3C6-AEE0FE0BCB94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5DAD6103-4D3E-4603-B709-EA33845DE725}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DAD6103-4D3E-4603-B709-EA33845DE725}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DAD6103-4D3E-4603-B709-EA33845DE725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0406010A-4E9E-4A2F-B3C6-AEE0FE0BCB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0406010A-4E9E-4A2F-B3C6-AEE0FE0BCB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0406010A-4E9E-4A2F-B3C6-AEE0FE0BCB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0406010A-4E9E-4A2F-B3C6-AEE0FE0BCB94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,13 +12,40 @@
         <vm:MainViewModel />
     </Design.DataContext>
 
-    <Grid ShowGridLines="True" Margin="5"
-          ColumnDefinitions="120, 100"
-          RowDefinitions="Auto, Auto, Auto">
-        <Label Grid.Row="0" Grid.Column="0" Margin="10">Brightness</Label>
-        <Slider Grid.Row="0" Grid.Column="1" x:Name="Brightness" Value="100" ValueChanged="Brightness_OnValueChanged"/>
-        <Label Grid.Row="1" Grid.Column="0" Margin="10">Contrast</Label>
-        <Slider Grid.Row="1" Grid.Column="1" x:Name="Contrast" Value="50" ValueChanged="Contrast_OnValueChanged"/>
+    <Grid ShowGridLines="True" ColumnDefinitions="Auto, Auto"
+          RowDefinitions="Auto, Auto">
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="20">
+            <Label>Select display</Label>
+            <ComboBox Name="DisplaySelector" ItemsSource="{Binding AllDisplays}"
+                      SelectedIndex="0" SelectionChanged="SelectingItemsControl_OnSelectionChanged" />
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="0" Margin="5"
+              ColumnDefinitions="150, 100, Auto"
+              RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+            <Label Grid.Row="0" Grid.Column="0" Margin="10">Brightness</Label>
+            <Slider Grid.Row="0" Grid.Column="1" x:Name="Brightness" Value="0.5" Minimum="0" Maximum="1"
+                    ValueChanged="Brightness_OnValueChanged" />
+
+            <Label Grid.Row="1" Grid.Column="0" Margin="10">Contrast</Label>
+            <Slider Grid.Row="1" Grid.Column="1" x:Name="Contrast" Value="0.5" Minimum="0" Maximum="1"
+                    ValueChanged="Contrast_OnValueChanged" />
+
+            <Label Grid.Row="2" Grid.Column="0" Margin="10">Gamma</Label>
+            <Slider Grid.Row="2" Grid.Column="1" x:Name="Gamma" Value="1.0" Minimum="-0.4" Maximum="2.4"
+                    ValueChanged="Gamma_OnValueChanged" />
+
+            <Label Grid.Row="3" Grid.Column="0" Margin="10">Vibrance</Label>
+            <Slider Grid.Row="3" Grid.Column="1" x:Name="Vibrance" Value="50" Minimum="0" Maximum="100"
+                    ValueChanged="Vibrance_OnValueChanged" />
+
+            <Label Grid.Row="4" Grid.Column="0" Margin="10">Hue</Label>
+            <Slider Grid.Row="4" Grid.Column="1" x:Name="Hue" Value="0" Minimum="0" Maximum="359"
+                    ValueChanged="Hue_OnValueChanged" />
+
+            <Button Grid.Row="5" Grid.Column="0" Click="ResetClicked" HorizontalAlignment="Right" Margin="10">Reset</Button>
+            <Button Grid.Row="5" Grid.Column="1" Click="ResetClicked" Margin="10">Save</Button>
+        </Grid>
     </Grid>
+
 
 </UserControl>

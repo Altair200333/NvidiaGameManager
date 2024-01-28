@@ -1,6 +1,10 @@
-﻿namespace NvidiaGameManager.ViewModels;
+﻿using ReactiveUI;
+using static NvidiaGameManager.Views.MainView;
+using System;
+
+namespace NvidiaGameManager.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    public string Greeting => "Welcome to Avalonia!";
+    public string[] AllDisplays { get; set;  } = new string[]{};
 }

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NvidiaGameManager
+namespace NvidiaGameManager.DisplayManagement.Native
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     public struct PHYSICAL_MONITOR
@@ -30,6 +26,9 @@ namespace NvidiaGameManager
         MC_COLOR_TEMPERATURE_11500K
     };
 
+    /**
+     * Exposes some part of windows native API that controls display settings (brightness, contrast, temperature)
+     */
     public class DisplayApi
     {
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]

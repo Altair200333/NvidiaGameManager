@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NvidiaGameManager
+namespace NvidiaGameManager.DisplayManagement.Native
 {
-    // cred: https://github.com/falahati/WindowsDisplay
+    // totally stolen from: https://github.com/falahati/WindowsDisplay
     [StructLayout(LayoutKind.Sequential)]
     internal struct LRect : IEquatable<LRect>
     {
@@ -55,9 +55,9 @@ namespace NvidiaGameManager
             unchecked
             {
                 var hashCode = Left;
-                hashCode = (hashCode * 397) ^ Top;
-                hashCode = (hashCode * 397) ^ Right;
-                hashCode = (hashCode * 397) ^ Bottom;
+                hashCode = hashCode * 397 ^ Top;
+                hashCode = hashCode * 397 ^ Right;
+                hashCode = hashCode * 397 ^ Bottom;
 
                 return hashCode;
             }
