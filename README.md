@@ -29,10 +29,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-**Why this project exists?**
+### Why this project exists?
 Many gamers adjust their display settings inside Nvidia Control Panel to boost the brightness of the image in dark areas. However, even one game often requires different settings depending on the location so switching configs every time becomes mundane.
 
 This program allows user to create custom graphics presets and quickly switch between them.
+
+### How it works?
+It is using [Windows Display API](https://github.com/falahati/WindowsDisplayAPI) to adjust brightness, contrast and gamma using gamma ramp and [NvAPIWrapper](https://github.com/falahati/NvAPIWrapper) to control vibrance and hue
+
+Funny thing is that it is not possible to set brightness/contrast over 100% using direct api calls, but possible using gamma ramp
 
 ## Screenshots
 
