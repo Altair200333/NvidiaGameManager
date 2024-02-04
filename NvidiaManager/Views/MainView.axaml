@@ -1,0 +1,102 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:NvidiaManager.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+             x:Class="NvidiaManager.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+    <Grid ShowGridLines="False" ColumnDefinitions="Auto, Auto"
+          RowDefinitions="Auto, Auto">
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+            <Label>Select display</Label>
+            <ComboBox Width="250" Name="DisplaySelector"
+                      ItemsSource="{Binding Displays}" SelectedIndex="{Binding SelectedDisplayIndex, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="0" Margin="5"
+              ColumnDefinitions="150, 100, Auto"
+              RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+            <Label Grid.Row="0" Grid.Column="0" Margin="10">Brightness</Label>
+            <Slider Value="{Binding Brightness}"
+                    Grid.Row="0" Grid.Column="1" x:Name="Brightness" Minimum="0" Maximum="1" />
+
+            <Label Grid.Row="1" Grid.Column="0" Margin="10">Contrast</Label>
+            <Slider Value="{Binding Contrast}"
+                    Grid.Row="1" Grid.Column="1" x:Name="Contrast" Minimum="0" Maximum="1" />
+
+            <Label Grid.Row="2" Grid.Column="0" Margin="10">Gamma</Label>
+            <Slider Value="{Binding Gamma}"
+                    Grid.Row="2" Grid.Column="1" x:Name="Gamma" Minimum="-0.4" Maximum="2.4" />
+
+            <Label Grid.Row="3" Grid.Column="0" Margin="10">Vibrance</Label>
+            <Slider Value="{Binding Vibrance}" Grid.Row="3" Grid.Column="1" x:Name="Vibrance" Minimum="0" Maximum="100" />
+
+            <Label Grid.Row="4" Grid.Column="0" Margin="10">Hue</Label>
+            <Slider Value="{Binding Hue, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" x:Name="Hue" Minimum="0"
+                    Maximum="359" />
+
+            <Button Grid.Row="5"
+                    Grid.Column="0"
+                    HorizontalAlignment="Right"
+                    Margin="10"
+                    Height="40"
+                    Command="{Binding ResetCommand}">
+                Reset
+            </Button>
+            <Button Grid.Row="5"
+                    Grid.Column="1"
+                    Margin="10"
+                    Height="40"
+                    Command="{Binding SaveCommand}">
+                Save
+            </Button>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" ShowGridLines="False"
+              ColumnDefinitions="Auto, Auto, Auto, Auto"
+              RowDefinitions="Auto">
+            <StackPanel Margin="10" VerticalAlignment="Bottom">
+                <Label>Select config</Label>
+                <ComboBox Width="150" Name="ConfigSelector" ItemsSource="{Binding Configs}"
+                          SelectedIndex="{Binding SelectedConfigIndex}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <Button VerticalAlignment="Bottom"
+                    Margin="10"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Height="40"
+                    Command="{Binding RemoveConfigCommand}">
+                remove
+            </Button>
+            <TextBox Grid.Row="0"
+                     Grid.Column="2"
+                     Name="ConfigName"
+                     VerticalAlignment="Bottom"
+                     Margin="10"
+                     Watermark="config name"
+                     Text="{Binding NewConfigName}" />
+            <Button Margin="10"
+                    VerticalAlignment="Bottom"
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Height="40"
+                    Command="{Binding AddConfigCommand}">
+                Add
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

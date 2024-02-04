@@ -3,6 +3,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   
@@ -17,19 +18,16 @@
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.7" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.7" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="NvAPIWrapper.Net" Version="0.8.1.101" />
-    <PackageReference Include="Semi.Avalonia" Version="11.0.7" />
-    <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
+    <PackageReference Include="Neumorphism.Avalonia" Version="0.10.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\WindowsDisplayAPI\WindowsDisplayAPI\WindowsDisplayAPI.csproj" />
+    <ProjectReference Include="..\DisplayController\DisplayController.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="config.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>

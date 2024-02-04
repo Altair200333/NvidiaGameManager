@@ -7,17 +7,15 @@
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia.Desktop" Version="11.0.7" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="NvAPIWrapper.Net" Version="0.8.1.101" />
-    <PackageReference Include="Semi.Avalonia" Version="11.0.7" />
-    <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
+    <PackageReference Include="Neumorphism.Avalonia" Version="0.10.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NvidiaGameManager\NvidiaGameManager.csproj" />
+    <ProjectReference Include="..\NvidiaManager\NvidiaManager.csproj" />
   </ItemGroup>
 </Project>
