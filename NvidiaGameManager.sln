@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NvidiaGameManager", "NvidiaGameManager\NvidiaGameManager.csproj", "{3B093D0C-6FA3-4161-B4FC-F7FC61C5B176}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NvidiaGameManager.Desktop", "NvidiaGameManager.Desktop\NvidiaGameManager.Desktop.csproj", "{5DAD6103-4D3E-4603-B709-EA33845DE725}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsDisplayAPI", "..\WindowsDisplayAPI\WindowsDisplayAPI\WindowsDisplayAPI.csproj", "{0406010A-4E9E-4A2F-B3C6-AEE0FE0BCB94}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NvidiaManager", "NvidiaManager\NvidiaManager.csproj", "{8223E6A1-1C9A-48C8-B120-A32856CB07D6}"
@@ -23,18 +19,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3B093D0C-6FA3-4161-B4FC-F7FC61C5B176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B093D0C-6FA3-4161-B4FC-F7FC61C5B176}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B093D0C-6FA3-4161-B4FC-F7FC61C5B176}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3B093D0C-6FA3-4161-B4FC-F7FC61C5B176}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B093D0C-6FA3-4161-B4FC-F7FC61C5B176}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B093D0C-6FA3-4161-B4FC-F7FC61C5B176}.Release|x64.ActiveCfg = Release|Any CPU
-		{5DAD6103-4D3E-4603-B709-EA33845DE725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DAD6103-4D3E-4603-B709-EA33845DE725}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DAD6103-4D3E-4603-B709-EA33845DE725}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5DAD6103-4D3E-4603-B709-EA33845DE725}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DAD6103-4D3E-4603-B709-EA33845DE725}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5DAD6103-4D3E-4603-B709-EA33845DE725}.Release|x64.ActiveCfg = Release|Any CPU
 		{0406010A-4E9E-4A2F-B3C6-AEE0FE0BCB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0406010A-4E9E-4A2F-B3C6-AEE0FE0BCB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0406010A-4E9E-4A2F-B3C6-AEE0FE0BCB94}.Debug|x64.ActiveCfg = Debug|x64
