@@ -16,7 +16,7 @@
   <h1 align="center">Nvidia settings manager</h3>
 
   <p align="center">
-    Preset manager for Nvidia Control Panel display settings
+    Simple preset manager for Nvidia Control Panel display settings
     <br />
     <br />
     <br />
