@@ -43,6 +43,7 @@ Funny thing is that it is not possible to set brightness/contrast over 100% usin
 
 ![image](https://github.com/Altair200333/NvidiaGameManager/assets/25277903/c048c61d-3a5f-4bd9-86ea-2258315db525)
 
+To run locally also reference: https://github.com/Altair200333/WindowsDisplayAPI-net.framework
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
