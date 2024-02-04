@@ -13,7 +13,7 @@
 
 <br />
 <div align="center">
-  <h1 align="center">Nvidia settings manager</h3>
+  <h1 align="center">Nvidia display settings manager</h3>
 
   <p align="center">
     Simple preset manager for Nvidia Control Panel display settings
